@@ -10,29 +10,42 @@
     <div class = "fundo">
         <div class = "header">
             <h1>ClimaSemTempo</h1>
-            <p id = "localizacao"></p>
+            <div class = "localizacao">
+                <img src="icons/locationicon.png" alt="" class = "iconelocalizacao">
+                <p id = "cidade">Porto Alegre</p>
+            </div>
             <div class = "searchbar">
                 <input type="text" placeholder="Insira a cidade aqui">
-            </div>   
+            </div>
         </div>
-        
         <div class = "infos">
-            <p id = "climahoje">Clima de hoje:</p>
-            <p type = "text" id = "datahora">Terça-feira, 10 de setembro, 14:37</p>
-            <p type = "text" id = "temperatura">31° C</p>
-            <p type = "text" id = "sensacao">Sensação de: 29° C</p>
-            <p type = "text" id = "precipitacao">Precipitação: 02%</p>
-            <p type = "text" id = "umidade">Umidade: 36%</p>
-            <p type = "text" id = "vento">Vento: 6km/h</p> 
+            <div class = "bloco1">
+                <p id = "climahoje">Clima de hoje:</p>
+                <p type = "text" id = "datahora">Terça-feira, 10 de setembro, 14:37</p>
+                <p type = "text" id = "temperatura">31° C</p>
+                <p type = "text" id = "sensacao">Sensação de: 29° C</p>
+            </div>
+            <div class = "bloco2">
+                <div class = iconeclima>
+                    <img src="icons/sun.png" alt="" class = "iconesol">
+                </div>
+                <div class = informacoesdia>
+                    <p type = "text" id = "precipitacao">Precipitação: 02%</p>
+                    <p type = "text" id = "umidade">Umidade: 36%</p>
+                    <p type = "text" id = "vento">Vento: 6km/h</p> 
+                </div>    
+            </div> 
         </div> 
-        <div class = "today"></div> 
+        <div class = "today"></div>
+            <p id = "previsao">Previsão para a semana:</p>
         <div class = "daily">
             <div class = "dia dia1"></div>
             <div class = "dia dia2"></div>
             <div class = "dia dia3"></div>
             <div class = "dia dia4"></div>
             <div class = "dia dia5"></div>
-            <div class = "dia dia6"></div>  
+            <div class = "dia dia6"></div> 
+            <div class = "dia dia7"></div> 
             </div>   
         </div>
     <script src="back.js" defer></script>
