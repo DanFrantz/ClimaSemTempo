@@ -46,3 +46,23 @@ function showError(error) {
         break;
     }
   }
+
+  function obterDataHoraAtual() {
+    const diasSemana = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];
+    const mesesAno = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
+  
+    const agora = new Date();
+    
+    const diaSemana = diasSemana[agora.getDay()];
+    const dia = agora.getDate();
+    const mes = mesesAno[agora.getMonth()];
+    const horas = String(agora.getHours()).padStart(2, '0');
+    const minutos = String(agora.getMinutes()).padStart(2, '0');
+  
+    return `${diaSemana}, ${dia} de ${mes}, ${horas}:${minutos}`;
+    
+  }
+  
+  document.getElementById("datahora").textContent = obterDataHoraAtual();
+  
+  
