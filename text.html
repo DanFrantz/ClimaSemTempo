@@ -6,7 +6,7 @@
     <title>ClimaSemTempo</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body  onLoad="getLocation()">
     <div class = "fundo">
         <div class = "header">
             <h1>ClimaSemTempo</h1>
@@ -15,7 +15,8 @@
                 <p id = "cidade">Porto Alegre</p>
             </div>
             <div class = "searchbar">
-                <input type="text" placeholder="Insira a cidade aqui">
+                <input id="inputLocal" type="text" placeholder="Insira a cidade aqui" >  
+                <button id="pesquisar" onclick="pesquisarLugar()">Buscar</button>
             </div>
         </div>
         <div class = "infos">
@@ -30,7 +31,7 @@
                     <img src="icons/sun.png" alt="" class = "iconesol">
                 </div>
                 <div class = informacoesdia>
-                    <p type = "text" id = "precipitacao">Precipitação: 02%</p>
+                    <p type = "text" id = "precipitacao">Precipitação: 2%</p>
                     <p type = "text" id = "umidade">Umidade: 36%</p>
                     <p type = "text" id = "vento">Vento: 6km/h</p> 
                 </div>    
