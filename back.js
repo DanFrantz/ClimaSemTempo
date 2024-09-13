@@ -28,7 +28,32 @@ function getCidade(position) {
         }
     })
     .catch(error => console.error('Erro:', error));
+
+
+
+
+
+    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=88bc384b754094ce3a19afb5355a6d72&lang=pt_br&units=metric`)
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Erro na requisição');
+    }
+    return response.json(); // Converte a resposta para JSON e retorna
+  })
+  .then(data => {
+    if (data!=null){
+      document.getElementById("temperatura").innerHTML = `${Math.round(data.main.temp)}° C`;
+      document.getElementById("sensacao").innerHTML = `Sensação de: ${Math.round(data.main.feels_like)}° C`;
+      document.getElementById("umidade").innerHTML = `Umidade: ${Math.round(data.main.humidity)}%`;
+      document.getElementById("vento").innerHTML = `Vento: ${Math.round((data.wind.speed)*3.6)}Km/h`;
+      //document.getElementById("precipitacao").innerHTML = `Precipitação: ${data.rain.h}`;
+    } else {
+      document.getElementById("cidade").innerHTML = "Nenhum resultado encontrado.";
+    }
+  })
+  .catch(error => console.error('Erro:', error));
 }
+
 
 function showError(error) {
     switch(error.code) {
@@ -108,11 +133,25 @@ function pesquisarLugar() {
             if (!response.ok) {
               throw new Error('Erro na requisição');
             }
+            
             return response.json(); // Converte a resposta para JSON e retorna
           })
           .then(data => {
             if (data!=null){
-              document.getElementById("cidade").innerHTML = `Nome:${nome}<br>Temperatura:${data.main.temp}.`
+              document.getElementById("cidade").innerHTML = `${nome}`
+              document.getElementById("temperatura").innerHTML = `${Math.round(data.main.temp)}° C`;
+              document.getElementById("sensacao").innerHTML = `Sensação de: ${Math.round(data.main.feels_like)}° C`;
+              document.getElementById("umidade").innerHTML = `Umidade: ${Math.round(data.main.humidity)}%`;
+              document.getElementById("vento").innerHTML = `Vento: ${Math.round((data.wind.speed)*3.6)}Km/h`;
+              //document.getElementById("precipitacao").innerHTML = `Precipitação: ${data.rain}`;
+
+              const img = document.getElementById("imagemclima");
+
+              if(data.weather.main === "clear") {
+                img.src = "icons/clear-sky";
+              }
+              
+
             } else {
               document.getElementById("cidade").innerHTML = "Nenhum resultado encontrado.";
             }

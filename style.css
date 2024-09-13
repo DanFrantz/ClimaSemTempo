@@ -70,8 +70,13 @@ body {
     align-items: center;
     margin-bottom: 2%;
 }
+#datahora{
+    font-size: 2vh;
+}
 #temperatura{
-    font-size: 5vh;
+    font-size: 8vh;
+    width: 20vh;
+    height: 8vh;
 }
 #climahoje{
     font-size: 3vh;
@@ -80,7 +85,7 @@ body {
     margin-left: 11%;
 }
 .bloco2{
-    margin-left: 46%;
+    margin-left: 50%;
     width: 40vh;
     display: flex;
     flex-direction: row;
