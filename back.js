@@ -64,5 +64,61 @@ function showError(error) {
   }
   
   document.getElementById("datahora").textContent = obterDataHoraAtual();
+
+
+  // Adiciona o evento de escuta para a tecla Enter no campo de busca uma única vez
+document.getElementById("inputLocal").addEventListener("keydown", function(event) {
+  if (event.key === "Enter") {
+      event.preventDefault(); // Evita o comportamento padrão
+      pesquisarLugar(); // Chama a função de pesquisa
+  }
+});
+
+
+function pesquisarLugar() {
+    var local = document.getElementById("inputLocal").value;
+    
+    fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${local}&limit=1&appid=88bc384b754094ce3a19afb5355a6d72`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Erro na requisição');
+            }
+            return response.json(); 
+        })
+        .then(data => {
+            if (data.length > 0) {
+                
+                const lugar = data[0];
+              
+                const lat = lugar.lat;
+                const lon = lugar.lon;
+                const nome = lugar.local_names ? lugar.local_names.pt : lugar.name;
+                climaLugar(lat, lon, nome); 
+            } else {
+                document.getElementById("cidade").innerHTML = "Nenhum resultado encontrado.";
+            }
+        })
+        .catch(error => console.error('Erro:', error));
+}
+
+    
+    function climaLugar(lat,long,nome){
+          fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=88bc384b754094ce3a19afb5355a6d72&lang=pt_br&units=metric`)
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Erro na requisição');
+            }
+            return response.json(); // Converte a resposta para JSON e retorna
+          })
+          .then(data => {
+            if (data!=null){
+              document.getElementById("cidade").innerHTML = `Nome:${nome}<br>Temperatura:${data.main.temp}.`
+            } else {
+              document.getElementById("cidade").innerHTML = "Nenhum resultado encontrado.";
+            }
+          })
+          .catch(error => console.error('Erro:', error));
+        }
+        
   
   
