@@ -16,6 +16,8 @@ let local=document.getElementById("inputLocal").value;
       const lon=lugar.lon;
       const nome=lugar.local_names.pt;
       climaLugar(lat,lon,nome);
+      climaFuturo(lat,lon);
+
     } else {
       document.getElementById("cidade").innerHTML = "Nenhum resultado encontrado.";
     }
@@ -24,7 +26,8 @@ let local=document.getElementById("inputLocal").value;
 }
 
 function climaLugar(lat,long,nome){
-      fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=88bc384b754094ce3a19afb5355a6d72&lang=pt_br&units=metric`)
+
+      fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=88bc384b754094ce3a19afb5355a6d72&lang=pt_br&units=metric`)//Busca os dados do dia.
       .then(response => {
         if (!response.ok) {
           throw new Error('Erro na requisição');
@@ -40,6 +43,24 @@ function climaLugar(lat,long,nome){
       })
       .catch(error => console.error('Erro:', error));
     }
-    
+
+function climaFuturo(lat,long){
+  console.log(" assssaassa")
+  fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&cnt=12&appid=88bc384b754094ce3a19afb5355a6d72&lang=pt_br&units=metric`)
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Erro na requisição');
+    }
+    return response.json(); // Converte a resposta para JSON e retorna
+  })
+  .then(data => {
+    if (data!=null){
+      console.log(data)
+        }
+  })
+  .catch(error => console.error('Erro:', error));
+}
+
+
 
 
