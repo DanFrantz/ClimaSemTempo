@@ -37,7 +37,7 @@ body {
 }
 #cidade{
     font-size: 2rem;
-    width: 35vh;
+    width: 40vh;
 }
 .searchbar input[type=text] {
     float: right;
