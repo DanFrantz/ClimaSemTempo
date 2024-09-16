@@ -75,6 +75,40 @@ function climaLugar(lat, long, nome) {
       .catch(error => console.error('Erro:', error));
 }
 
+document.getElementById("inputLocal").addEventListener("keydown", function(event) {
+  if (event.key === "Enter") {
+      event.preventDefault(); // Evita o comportamento padrão
+      pesquisarLugar(); // Chama a função de pesquisa
+  }
+});
+
+
+function pesquisarLugar() {
+    var local = document.getElementById("inputLocal").value;
+    
+    fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${local}&limit=1&appid=88bc384b754094ce3a19afb5355a6d72`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Erro na requisição');
+            }
+            return response.json(); 
+        })
+        .then(data => {
+            if (data.length > 0) {
+                
+                const lugar = data[0];
+              
+                const lat = lugar.lat;
+                const lon = lugar.lon;
+                const nome = lugar.local_names ? lugar.local_names.pt : lugar.name;
+                climaLugar(lat, lon, nome); 
+            } else {
+                document.getElementById("cidade").innerHTML = "Nenhum resultado encontrado.";
+            }
+        })
+        .catch(error => console.error('Erro:', error));
+}
+
 
 function climaFuturo(lat, long) {
   fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&cnt=40&appid=88bc384b754094ce3a19afb5355a6d72&lang=pt_br&units=metric`)
