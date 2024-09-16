@@ -2,11 +2,13 @@
     margin: 0;
     padding: 0;
 }
+
+
 body {
     background-image: url('icons/tempestade.jpg');
-    background-size: cover; /* Ajusta a imagem para cobrir toda a tela */
-    background-position: center; /* Centraliza a imagem */
-    background-repeat: no-repeat; /* Impede que a imagem se repita */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .loading-screen {
@@ -131,18 +133,20 @@ body {
     background-color: #D9D9D9;
     height: 100vh;
     color: black;
+    display: none;
 }
+
 .header {
     height: 10vh;
     padding: 5vh;
-    margin-left: 3%;
-    margin-right: 3%;
+    margin: 0 3%;
     display: flex;
     flex-direction: row;
     gap: 10%;
     align-items: center;
     padding-bottom: 3vh;
 }
+
 .localizacao {
     display: flex;
     flex-direction: row;
@@ -150,14 +154,17 @@ body {
     align-items: center;
     flex-shrink: 0;
 }
+
 .iconelocalizacao {
     height: 3vh;
     width: 3vh;
 }
+
 #cidade {
     font-size: 2rem;
     width: 40vh;
 }
+
 .searchbar input[type=text] {
     float: right;
     padding: 1vh;
@@ -170,18 +177,17 @@ body {
 }
 
 @media screen and (max-width: 600px) {
-    .searchbar a, .searchbar input[type=text] {
+    .searchbar input[type=text] {
         float: none;
         display: block;
         text-align: left;
         width: 100%;
         margin: 0;
         padding: 2vh;
-    }
-    .searchbar input[type=text] {
         border: 1px solid #ccc;
     }
 }
+
 .infos {
     margin-top: 0%;
     display: flex;
@@ -189,15 +195,19 @@ body {
     align-items: center;
     margin-bottom: 2%;
 }
+
 #temperatura {
     font-size: 5vh;
 }
+
 #climahoje {
     font-size: 3vh;
 }
+
 .bloco1 {
     margin-left: 11%;
 }
+
 .bloco2 {
     margin-left: 46%;
     width: 40vh;
@@ -205,85 +215,37 @@ body {
     flex-direction: row;
     gap: 10%;
 }
+
 .iconesol {
     margin-top: 30%;
     height: 10vh;
     width: 10vh;
 }
+
 .informacoesdia {
     margin-top: 3.5vh;
 }
+
 .daily {
     justify-content: center;
     align-items: center;
     width: 80vw;
     display: flex;
-    gap: 1.6vw;
-    align-items: center;
+    gap: 1vw;
+    margin: 2% auto;
 }
+
 .dia {
-    margin-top: 1vh;
-    width: 40vw;
-    height: 25vh;
-    font-size: 2vh;
-    border-radius: 20px;
-    border-style: hidden;
-    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
-    background-color: black;
-    opacity: 50%;
+    height: 15vh;
+    width: 12vw;
+    text-align: center;
+    background-color: white;
+    border-radius: 15px;
+    border: 1px solid black;
 }
-.today {
-    margin-left: 10%;
-    align-items: center;
-    margin-bottom: 2%;
-    justify-content: center;
-    width: 80vw;
-    height: 25vh;
-    font-size: 2vh;
-    border-radius: 20px;
-    border-style: hidden;
-    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
-    background-color: black;
-    opacity: 50%;
-}
-#previsao {
-    margin-right: 138vh;
-}
-.tudo {
-    align-items: center;
-    justify-content: center;
+
+.dia1, .dia2, .dia3, .dia4 {
     display: flex;
     flex-direction: column;
-}
-
-/* CSS para a previsão das próximas horas */
-.previsao-horas-container {
-    display: flex;
-    flex-direction: row;
-    gap: 1.6vw;
-    overflow-x: auto;
-    padding: 2vh;
-    margin-top: 2vh;
-    justify-content: center;
-    width: 90vw;
-}
-
-.previsao-hora {
-    background-color: rgba(0, 0, 0, 0.8);
-    padding: 2vh;
-    border-radius: 8px;
-    text-align: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    min-width: 100px;
-    color: white;
-}
-
-.previsao-hora p {
-    margin: 0.5vh 0;
-}
-
-.previsao-hora img {
-    height: 5vh;
-    width: 5vh;
-    margin-top: 0.5vh;
+    gap: 10%;
 }

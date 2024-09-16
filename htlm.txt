@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClimaSemTempo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="loading-screen">
+        <div class="container">
+            <div class="cloud front">
+                <span class="left-front"></span>
+                <span class="right-front"></span>
+            </div>
+            <span class="sun sunshine"></span>
+            <span class="sun"></span>
+            <div class="cloud back">
+                <span class="left-back"></span>
+                <span class="right-back"></span>
+            </div>
+        </div>
+    </div>
+>
+    <div class="fundo" id="main-content" style="display: none;">
+        <div class="header">
+            <h1>ClimaSemTempo</h1>
+            <div class="localizacao">
+                <img src="icons/locationicon.png" alt="" class="iconelocalizacao">
+                <p id="cidade"></p>
+            </div>
+            <div class="searchbar">
+                <input type="text" id="inputLocal" placeholder="Insira a cidade aqui">
+            </div>
+        </div>
+
+        <div class="infos">
+            <div class="bloco1">
+                <h3 id="climahoje">Clima de hoje:</h3>
+                <p id="datahora"></p>
+                <p id="temperatura">31° C</p>
+                <p id="sensacao">Sensação de: 29° C</p>
+            </div>
+            <div class="bloco2">
+                <div class="iconeclima">
+                    <img src="icons/sun.png" alt="" class="iconesol">
+                </div>
+                <div class="informacoesdia">
+                    <p id="precipitacao">Precipitação: 02%</p>
+                    <p id="umidade">Umidade: 36%</p>
+                    <p id="vento">Vento: 6km/h</p> 
+                </div>    
+            </div> 
+        </div>
+
+        <div class="previsao-horas-container" id="previsaoHoras">
+
+        </div>
+
+        <div class="tudo">
+            <div class="frase">
+                <h3 id="previsao">Previsão para a semana:</h3>
+            </div>   
+            <div class="daily">
+                <div class="dia dia1"></div>
+                <div class="dia dia2"></div>
+                <div class="dia dia3"></div>
+                <div class="dia dia4"></div>
+            </div>   
+        </div>
+    </div>
+
+    <script src="back.js" defer></script>
+</body>
+</html>
