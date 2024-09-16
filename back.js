@@ -43,7 +43,14 @@ function climaLugar(lat,long,nome){
       })
       .catch(error => console.error('Erro:', error));
     }
-
+  // Adiciona o evento de escuta para a tecla Enter no campo de busca uma única vez
+  document.getElementById("inputLocal").addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        event.preventDefault(); // Evita o comportamento padrão
+        pesquisarLugar(); // Chama a função de pesquisa
+    }
+  });
+  
 function climaFuturo(lat,long){
   console.log(" assssaassa")
   fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&cnt=12&appid=88bc384b754094ce3a19afb5355a6d72&lang=pt_br&units=metric`)
