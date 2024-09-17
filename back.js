@@ -45,6 +45,7 @@ function getCidade(position) {
   if (!response.ok) {
     throw new Error('Erro na requisição');
   }
+  climaFuturo(lat, lng);
   return response.json(); // Converte a resposta para JSON e retorna
 })
 .then(data => {
@@ -58,6 +59,7 @@ function getCidade(position) {
     document.getElementById("cidade").innerHTML = "Nenhum resultado encontrado.";
   }
 })
+
 .catch(error => console.error('Erro:', error));
 }
 
