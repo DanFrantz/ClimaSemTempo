@@ -20,23 +20,45 @@ function getLocation() {
 }
 
 function getCidade(position) {
-    lat = position.coords.latitude;
-    lng = position.coords.longitude;
+  lat = position.coords.latitude;
+  lng = position.coords.longitude;
 
-    var url = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lng}`;
+  var url = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lng}`;
 
-    fetch(url)
-        .then(response => response.json())
-        .then(data => {
-        if (data.address && data.address.city) {
-            document.getElementById("cidade").textContent = data.address.city;
-            climaLugar(lat, lng, data.address.city);  // Obtém o clima atual
-            climaFuturo(lat, lng);  // Obtém a previsão futura
-        } else {
-            document.getElementById("cidade").textContent = "Cidade não encontrada";
-        }
-    })
-    .catch(error => console.error('Erro:', error));
+  fetch(url)
+      .then(response => response.json())
+      .then(data => {
+      if (data.address && data.address.city) {
+          document.getElementById("cidade").textContent = data.address.city;
+      } else {
+          document.getElementById("cidade").textContent = "Cidade não encontrada";
+      }
+  })
+  .catch(error => console.error('Erro:', error));
+
+
+
+
+
+  fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=88bc384b754094ce3a19afb5355a6d72&lang=pt_br&units=metric`)
+.then(response => {
+  if (!response.ok) {
+    throw new Error('Erro na requisição');
+  }
+  return response.json(); // Converte a resposta para JSON e retorna
+})
+.then(data => {
+  if (data!=null){
+    document.getElementById("temperatura").innerHTML = `${Math.round(data.main.temp)}° C`;
+    document.getElementById("sensacao").innerHTML = `Sensação de: ${Math.round(data.main.feels_like)}° C`;
+    document.getElementById("umidade").innerHTML = `Umidade: ${Math.round(data.main.humidity)}%`;
+    document.getElementById("vento").innerHTML = `Vento: ${Math.round((data.wind.speed)*3.6)}Km/h`;
+    //document.getElementById("precipitacao").innerHTML = `Precipitação: ${data.rain.h}`;
+  } else {
+    document.getElementById("cidade").innerHTML = "Nenhum resultado encontrado.";
+  }
+})
+.catch(error => console.error('Erro:', error));
 }
 
 function showError(error) {
@@ -56,23 +78,62 @@ function showError(error) {
     }
 }
 
-function climaLugar(lat, long, nome) {
+function obterDataHoraAtual() {
+  const diasSemana = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];
+  const mesesAno = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
+
+  const agora = new Date();
+  
+  const diaSemana = diasSemana[agora.getDay()];
+  const dia = agora.getDate();
+  const mes = mesesAno[agora.getMonth()];
+  const horas = String(agora.getHours()).padStart(2, '0');
+  const minutos = String(agora.getMinutes()).padStart(2, '0');
+
+  return `${diaSemana}, ${dia} de ${mes}, ${horas}:${minutos}`;
+  
+}
+document.getElementById("datahora").textContent = obterDataHoraAtual();
+
+
+  // Adiciona o evento de escuta para a tecla Enter no campo de busca uma única vez
+document.getElementById("inputLocal").addEventListener("keydown", function(event) {
+  if (event.key === "Enter") {
+      event.preventDefault(); // Evita o comportamento padrão
+      pesquisarLugar(); // Chama a função de pesquisa
+  }
+});
+
+function climaLugar(lat,long,nome){
   fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=88bc384b754094ce3a19afb5355a6d72&lang=pt_br&units=metric`)
-      .then(response => {
-          if (!response.ok) {
-              throw new Error('Erro na requisição');
-          }
-          return response.json();
-      })
-      .then(data => {
-          if (data != null) {
-              const temperatura = data.main.temp.toFixed(2);  // Limita para 2 casas decimais
-              document.getElementById("cidade").innerHTML = `Nome: ${nome}<br>Temperatura: ${temperatura}°C`;
-          } else {
-              document.getElementById("cidade").innerHTML = "Nenhum resultado encontrado.";
-          }
-      })
-      .catch(error => console.error('Erro:', error));
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Erro na requisição');
+    }
+    
+    return response.json(); // Converte a resposta para JSON e retorna
+  })
+  .then(data => {
+    if (data!=null){
+      document.getElementById("cidade").innerHTML = `${nome}`
+      document.getElementById("temperatura").innerHTML = `${Math.round(data.main.temp)}° C`;
+      document.getElementById("sensacao").innerHTML = `Sensação de: ${Math.round(data.main.feels_like)}° C`;
+      document.getElementById("umidade").innerHTML = `Umidade: ${Math.round(data.main.humidity)}%`;
+      document.getElementById("vento").innerHTML = `Vento: ${Math.round((data.wind.speed)*3.6)}Km/h`;
+      //document.getElementById("precipitacao").innerHTML = `Precipitação: ${data.rain}`;
+
+      const img = document.getElementById("imagemclima");
+
+      if(data.weather.main === "clear") {
+        img.src = "icons/clear-sky";
+      }
+      
+
+    } else {
+      document.getElementById("cidade").innerHTML = "Nenhum resultado encontrado.";
+    }
+  })
+  .catch(error => console.error('Erro:', error));
 }
 
 document.getElementById("inputLocal").addEventListener("keydown", function(event) {
