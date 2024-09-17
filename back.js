@@ -101,7 +101,7 @@ document.getElementById("inputLocal").addEventListener("keydown", function(event
   if (event.key === "Enter") {
       event.preventDefault(); // Evita o comportamento padrão
       pesquisarLugar(); // Chama a função de pesquisa
-  }
+x  }
 });
 
 function climaLugar(lat,long,nome){
@@ -163,6 +163,7 @@ function pesquisarLugar() {
                 const lon = lugar.lon;
                 const nome = lugar.local_names ? lugar.local_names.pt : lugar.name;
                 climaLugar(lat, lon, nome); 
+                climaFuturo(lat, lon);
             } else {
                 document.getElementById("cidade").innerHTML = "Nenhum resultado encontrado.";
             }
