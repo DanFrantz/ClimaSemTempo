@@ -203,7 +203,7 @@ function exibirPrevisao(previsoes) {
           minute: '2-digit'
       });
 
-      const temperatura = previsao.main.temp.toFixed(2);  // Limita para 2 casas decimais
+      const temperatura = Math.round(previsao.main.temp);  // Limita para 2 casas decimais
       const descricao = previsao.weather[0].description;
       const icone = previsao.weather[0].icon;
       const iconeUrl = `http://openweathermap.org/img/wn/${icone}@2x.png`;
