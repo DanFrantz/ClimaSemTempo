@@ -18,7 +18,7 @@ function getLocation() {
     x.innerHTML = "Geolocation is not supported by this browser.";
   }
 }
-
+//Pega a cidade
 function getCidade(position) {
   lat = position.coords.latitude;
   lng = position.coords.longitude;
@@ -37,7 +37,7 @@ function getCidade(position) {
   .catch(error => console.error('Erro:', error));
 
 
-
+//Pega a cidade que a pessoa está e faz a previsão dessa localização
 
 
   fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=88bc384b754094ce3a19afb5355a6d72&lang=pt_br&units=metric`)
@@ -54,8 +54,10 @@ function getCidade(position) {
     document.getElementById("sensacao").innerHTML = `Sensação de: ${Math.round(data.main.feels_like)}° C`;
     document.getElementById("umidade").innerHTML = `Umidade: ${Math.round(data.main.humidity)}%`;
     document.getElementById("vento").innerHTML = `Vento: ${Math.round((data.wind.speed)*3.6)}Km/h`;
-    //document.getElementById("precipitacao").innerHTML = `Precipitação: ${data.rain.h}`;
-  } else {
+    document.getElementById("pressao").innerHTML = `Pressão: ${data.main.pressure} mb`;
+    document.getElementById("visibilidade").innerHTML = `Visibilidade: ${data.visibility}km`;
+
+} else {
     document.getElementById("cidade").innerHTML = "Nenhum resultado encontrado.";
   }
 })
@@ -106,6 +108,7 @@ document.getElementById("inputLocal").addEventListener("keydown", function(event
 x  }
 });
 
+//Recebe a localização pesquisada e faz previsão
 function climaLugar(lat,long,nome){
   fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=88bc384b754094ce3a19afb5355a6d72&lang=pt_br&units=metric`)
   .then(response => {
@@ -122,7 +125,9 @@ function climaLugar(lat,long,nome){
       document.getElementById("sensacao").innerHTML = `Sensação de: ${Math.round(data.main.feels_like)}° C`;
       document.getElementById("umidade").innerHTML = `Umidade: ${Math.round(data.main.humidity)}%`;
       document.getElementById("vento").innerHTML = `Vento: ${Math.round((data.wind.speed)*3.6)}Km/h`;
-      //document.getElementById("precipitacao").innerHTML = `Precipitação: ${data.rain}`;
+      document.getElementById("pressao").innerHTML = `Pressão: ${data.main.pressure} mb`;
+      document.getElementById("visibilidade").innerHTML = `Visibilidade: ${data.visibility}km`;
+
 
       const img = document.getElementById("imagemclima");
 
