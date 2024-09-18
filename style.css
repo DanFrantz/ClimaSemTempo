@@ -193,14 +193,29 @@ body {
     margin-bottom: 2%;
 }
 #temperatura {
-    font-size: 5vh;
+    font-size: 10vh;
+}
+#datahora{
+    font-size:3vh;
 }
 #climahoje {
-    font-size: 3vh;
+    font-size: 7vh;
 }
+#sensacao{
+    font-size:4vh;
+}
+#pressao,#umidade,#vento,#visibilidade{
+    font-size:3.5vh;
+}
+
 .bloco1 {
-    margin-left: 7%;
+    margin-left: 7%;;
 }
+
+
+
+
+
 .bloco2 {
     margin-left: 46%;
     width: 40vh;
@@ -244,6 +259,7 @@ body {
 }
 #previsao {
     margin-right: 138vh;
+    
 }
 .tudo {
     align-items: center;
@@ -263,7 +279,8 @@ body {
     width: 90vw;
     height: 40vh; /* Ocupa a metade inferior da tela */
     max-width: 100%; /* Garante que o container não ultrapasse a tela */
-    align-self: flex-end; /* Alinha os blocos no final da área disponível */
+    align-self: center; /* Alinha os blocos no final da área disponível */
+    
 }
 
 .previsao-hora {
@@ -281,7 +298,7 @@ body {
 }
 
 .previsao-hora p {
-    margin: 0.5vh 0;
+    margin: 0.5vh 0;    
 }
 
 .previsao-hora img {
