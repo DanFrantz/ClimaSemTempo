@@ -3,7 +3,7 @@
     padding: 0;
 }
 body {
-    background-image: url('icons/tempestade.jpg');
+    background-image: url('icons/terra.jpg');
     background-size: cover; /* Ajusta a imagem para cobrir toda a tela */
     background-position: center; /* Centraliza a imagem */
     background-repeat: no-repeat; /* Impede que a imagem se repita */
@@ -128,7 +128,7 @@ body {
 }
 
 .fundo {
-    background-color: #babcbd;
+    background-color: #aab6bc;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -277,7 +277,7 @@ body {
     padding: 10vh;
     justify-content: center;
     width: 90vw;
-    height: 40vh; /* Ocupa a metade inferior da tela */
+    height: 30vh; /* Ocupa a metade inferior da tela */
     max-width: 100%; /* Garante que o container não ultrapasse a tela */
     align-self: center; /* Alinha os blocos no final da área disponível */
     
@@ -302,7 +302,7 @@ body {
 }
 
 .previsao-hora img {
-    height: 6vh; /* Ajusta o tamanho da imagem de acordo com o novo layout */
-    width: 6vh;
+    height: 15vh; /* Ajusta o tamanho da imagem de acordo com o novo layout */
+    width: 15vh;
     margin-top: 0.5vh;
 }
