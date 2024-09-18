@@ -55,7 +55,7 @@ function getCidade(position) {
     document.getElementById("umidade").innerHTML = `Umidade: ${Math.round(data.main.humidity)}%`;
     document.getElementById("vento").innerHTML = `Vento: ${Math.round((data.wind.speed)*3.6)}Km/h`;
     document.getElementById("pressao").innerHTML = `Pressão: ${data.main.pressure} mb`;
-    document.getElementById("visibilidade").innerHTML = `Visibilidade: ${data.visibility}km`;
+    document.getElementById("visibilidade").innerHTML = `Visibilidade: ${(data.visibility/1000)}km`;
 
 } else {
     document.getElementById("cidade").innerHTML = "Nenhum resultado encontrado.";
@@ -126,7 +126,7 @@ function climaLugar(lat,long,nome){
       document.getElementById("umidade").innerHTML = `Umidade: ${Math.round(data.main.humidity)}%`;
       document.getElementById("vento").innerHTML = `Vento: ${Math.round((data.wind.speed)*3.6)}Km/h`;
       document.getElementById("pressao").innerHTML = `Pressão: ${data.main.pressure} mb`;
-      document.getElementById("visibilidade").innerHTML = `Visibilidade: ${data.visibility}km`;
+      document.getElementById("visibilidade").innerHTML = `Visibilidade: ${(data.visibility/1000)}km`;
 
 
       const img = document.getElementById("imagemclima");
@@ -214,6 +214,8 @@ function exibirPrevisao(previsoes) {
       const descricao = previsao.weather[0].description;
       const icone = previsao.weather[0].icon;
       const iconeUrl = `http://openweathermap.org/img/wn/${icone}@2x.png`;
+
+      
 
       // Cria um bloco para exibir a previsão
       const previsaoBloco = `
