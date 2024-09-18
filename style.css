@@ -128,8 +128,11 @@ body {
 }
 
 .fundo {
-    background-color: #D9D9D9;
+    background-color: #babcbd;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Distribui os elementos, fixando a previsão na parte inferior */
     color: black;
 }
 .header {
@@ -213,14 +216,7 @@ body {
 .informacoesdia {
     margin-top: 3.5vh;
 }
-.daily {
-    justify-content: center;
-    align-items: center;
-    width: 80vw;
-    display: flex;
-    gap: 1.6vw;
-    align-items: center;
-}
+
 .dia {
     margin-top: 1vh;
     width: 40vw;
@@ -258,17 +254,16 @@ body {
     
 }
 
-/* CSS para a previsão das próximas horas */
 .previsao-horas-container {
     display: flex;
     flex-direction: row;
     gap: 1.6vw;
-    overflow-x: auto;
-    padding: 2vh;
-    margin-top: 2vh;
+    padding: 10vh;
     justify-content: center;
     width: 90vw;
-    padding-top:20vh;
+    height: 40vh; /* Ocupa a metade inferior da tela */
+    max-width: 100%; /* Garante que o container não ultrapasse a tela */
+    align-self: flex-end; /* Alinha os blocos no final da área disponível */
 }
 
 .previsao-hora {
@@ -279,6 +274,10 @@ body {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     min-width: 100px;
     color: white;
+
+    /* Tamanhos verticais maiores para preencher a área */
+    height: 100%; /* Ocupa a altura total do container */
+    flex: 1 1 auto; /* Garante que o bloco se ajuste ao espaço disponível */
 }
 
 .previsao-hora p {
@@ -286,7 +285,7 @@ body {
 }
 
 .previsao-hora img {
-    height: 5vh;
-    width: 5vh;
+    height: 6vh; /* Ajusta o tamanho da imagem de acordo com o novo layout */
+    width: 6vh;
     margin-top: 0.5vh;
 }
