@@ -1,3 +1,5 @@
+
+//Tela de carregamento para o usuário aceitar a permissão de localização
 window.addEventListener("load", () => {
   setTimeout(() => {
       document.querySelector(".loading-screen").style.display = "none";
@@ -5,10 +7,12 @@ window.addEventListener("load", () => {
   }, 3000); 
 });
 
+
 const x = document.getElementById("cidade");
 var lat;
 var lng;
 
+//Chama a função para solicitar a permissão e 
 getLocation();
 
 function getLocation() {
